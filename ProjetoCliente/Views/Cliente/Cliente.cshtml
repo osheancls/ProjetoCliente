@@ -1,0 +1,34 @@
+﻿@model IEnumerable<ProjetoCliente.Models.Cliente> 
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a asp-controller="Cliente" asp-action="CadCliente">Cadastra Cliente</a>
+</p>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "editarCliente", new { id = item.Id }) |
+            @Html.ActionLink("Excluir", "Delete", new { id = item.Id },
+                     new { onclick = "return confirm('Deseja realmente Excluir este item?');" })
+        </td>
+    </tr>
+}
+    </tbody>
+</table>
